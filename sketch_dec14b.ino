@@ -32,57 +32,25 @@ void setup() {
 
 void loop() {
   if(digitalRead(pinA)==LOW){
-    NUM++;
+    if(NUM<=32){
+      NUM++;
+    }
   }else if(digitalRead(pinB)==LOW){
-    NUM--;
-  }else if(NUM==32){
-    NUM=0;
+    if(NUM>=0){
+      NUM--;
+    } 
   }
   NUMBER=NUM;
+
+  for(int i=RED;i>=WHITE;i--){
+    if((NUMBER%2)==1){
+      digitalWrite(i, HIGH);
+      NUMBER--;
+    }else{
+      digitalWrite(i, LOW);
+    }
+    NUMBER=NUMBER/2;
+  }
   
-  if((NUMBER%2)==1){
-    digitalWrite(RED, HIGH);
-    NUMBER--;
-    NUMBER=NUMBER/2;
-  }else{
-    digitalWrite(RED, LOW);
-    NUMBER=NUMBER/2;
-  }
-
-  if((NUMBER%2)==1){
-    digitalWrite(YELLOW, HIGH);
-    NUMBER--;
-    NUMBER=NUMBER/2;
-  }else{
-    digitalWrite(YELLOW, LOW);
-    NUMBER=NUMBER/2;
-  }
-
-  if((NUMBER%2)==1){
-    digitalWrite(BLUE, HIGH);
-    NUMBER--;
-    NUMBER=NUMBER/2;
-  }else{
-    digitalWrite(BLUE, LOW);
-    NUMBER=NUMBER/2;
-  }
-
-  if((NUMBER%2)==1){
-    digitalWrite(GREEN, HIGH);
-    NUMBER--;
-    NUMBER=NUMBER/2;
-  }else{
-    digitalWrite(GREEN, LOW);
-    NUMBER=NUMBER/2;
-  }
-
-  if((NUMBER%2)==1){
-    digitalWrite(WHITE, HIGH);
-    NUMBER--;
-    NUMBER=NUMBER/2;
-  }else{
-    digitalWrite(WHITE, LOW);
-    NUMBER=NUMBER/2;
-  }
   delay(200);
 }
